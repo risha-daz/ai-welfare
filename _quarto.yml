@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   render:
-    - README.md
+    - reports/index.qmd
     - reports/index.qmd
     - reports/proposal.qmd
     - reports/method.qmd
@@ -12,10 +12,10 @@ website:
   title: "Project Docs"
   navbar:
     left:
-      - href: README.md
+      - href: reports/index.qmd
         text: Readme
       - href: reports/index.qmd
-        text: Home
+        text: Docs
       - href: reports/proposal.qmd
         text: Proposal
       - href: reports/method.qmd

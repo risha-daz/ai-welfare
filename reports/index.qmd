@@ -1,0 +1,6 @@
+---
+title: "Project Docs"
+toc: true
+---
+
+{{< include ../README.md >}}
