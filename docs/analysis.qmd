@@ -1,4 +1,0 @@
-```python
-input_folder = "results/smoke/"
-model = "qwen3.5-4b"
-```
