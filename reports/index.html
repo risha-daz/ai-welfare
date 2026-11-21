@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Project Docs</title>
+<title>Project Docs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -95,12 +130,12 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../README.html"> 
+    <a class="nav-link active" href="../reports/index.html" aria-current="page"> 
 <span class="menu-text">Readme</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../reports/index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../reports/index.html"> 
+<span class="menu-text">Docs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../reports/proposal.html"> 
@@ -126,17 +161,122 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welfare-in-ai-systems" id="toc-welfare-in-ai-systems" class="nav-link active" data-scroll-target="#welfare-in-ai-systems">Welfare in AI Systems</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure">Repository Structure</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  <li><a href="#cost" id="toc-cost" class="nav-link" data-scroll-target="#cost">Cost</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project Docs</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<section id="welfare-in-ai-systems" class="level1">
+<h1>Welfare in AI Systems</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Have you ever wondered whether to tried to treat AI systems as sentient entities? Maybe in a one-on-one chat interface? What about when it is a repetitive “mechanical” task, like an automated repeated prompt? I have also wondered whether this has an effect on the responses and whether one or the other is a better approach.</p>
+<p>In short “welfare subjects” are entities which can be said to possess something akin to a “conciousness” and further, the ability to have “positive” or “negative” experiences (referred to as “valence” henceforth). Then, an ability to possess “agency”, where any actions that entity makes has an intention which takes into account this sense of self. Such as Even with living beings, this is not a fully understood, so it is a hotly debated topic when it comes to artificial systems.</p>
+<blockquote class="blockquote">
+<p>This is in part inspired by a take-home-assessment inititated by Anthropic for an internship program. I wrote this proposal and got curious of its results so i decided to run this myself and see the results.</p>
+</blockquote>
+<p>Please head over to &lt;proposal.md&gt; for the full breakdown.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Prerequisites: - python 3.10+ - lmstudio (for local llm) or api key (for llm api)</p>
+<section id="clone-the-repository" class="level4">
+<h4 class="anchored" data-anchor-id="clone-the-repository">Clone the repository</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>this repo<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ai-welfare</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="setup-your-llm" class="level4">
+<h4 class="anchored" data-anchor-id="setup-your-llm">Setup your LLM</h4>
+<p>Models are OpenAI-compatible endpoints listed under <code>models</code> in <code>config.json</code>. For hosted APIs, put the key in <code>.env</code> (git-ignored) under the variable named by <code>api_key_env</code>, e.g.&nbsp;<code>GROQ_API_KEY=...</code>. For LM Studio, start the local server (default <code>http://localhost:1234/v1</code>) and load the model.</p>
+</section>
+<section id="configure-your-scenarios-and-personas" class="level4">
+<h4 class="anchored" data-anchor-id="configure-your-scenarios-and-personas">Configure your scenarios and personas</h4>
+<p>Personas, stake currencies, intensities, prompt templates and run settings (temperature, samples per cell, seed, <code>max_tokens</code>) are all in <code>config.json</code> and follow <code>method.md</code> (A2).</p>
+</section>
+<section id="run-multiple-iterations" class="level4">
+<h4 class="anchored" data-anchor-id="run-multiple-iterations">Run multiple iterations</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. preview trial counts and a sample prompt, no API calls</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.run <span class="at">--experiment</span> pilot <span class="at">--model</span> all <span class="at">--dry-run</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. small smoke test (results/smoke/)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.run <span class="at">--experiment</span> pilot <span class="at">--model</span> all <span class="at">--limit</span> 5 <span class="at">--run-id</span> smoke</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. real runs: pilot (10% of cells, n=5), main grid (4,100 trials/model), self-vs-other control (800/model)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.run <span class="at">--experiment</span> pilot <span class="at">--model</span> all</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.run <span class="at">--experiment</span> main <span class="at">--model</span> all</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.run <span class="at">--experiment</span> self_vs_other <span class="at">--model</span> all</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. flatten raw results to CSV</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> src.export_csv <span class="at">--run-id</span> main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Runs are resumable: re-run the same command and finished trials are skipped (trials that ended in an error are retried). Use <code>--limit N</code> to run in chunks.</p>
+</section>
+</section>
+<section id="repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
+<pre><code>setup/config.json        models, prompts, personas, stakes, run settings
+.env               API keys (git-ignored)
+src/
+  config.py        load/validate config.json and .env
+  prompts.py       prompt construction (method.md A2)
+  grid.py          deterministic trial generation: main, self_vs_other, pilot
+  client.py        OpenAI-compatible chat call with logged retries
+  run.py           CLI runner (resumable, concurrent, writes raw JSONL)
+  export_csv.py    flatten raw JSONL to CSV (no interpretation)
+results/&lt;run_id&gt;/  (git-ignored)
+  manifest.json    config snapshot (no secrets), git commit, invocations
+  raw/&lt;model&gt;.jsonl  one line per trial: exact prompts, full API responses, retry log
+  csv/&lt;model&gt;.csv    flattened export</code></pre>
+</section>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<p>The script runs each trial as a two-turn conversation (the game, then the self-report) on every selected model and appends the full raw exchange to <code>results/&lt;run_id&gt;/raw/&lt;model&gt;.jsonl</code>: exact messages, the complete API response (including any reasoning field, finish reason and token usage), latencies, and every retry or error. Nothing is parsed or filtered at run time; exclusion rules from <code>method.md</code> A4 are applied later. <code>export_csv.py</code> flattens this to CSV and adds two naive, unvalidated helper columns (first A/B/1/2 token and first integer in the self-report). Analysis, plots, J-lens and the Assistant Axis are not part of this step yet; the endpoints used here do not expose the residual stream.</p>
+</section>
+<section id="cost" class="level2">
+<h2 class="anchored" data-anchor-id="cost">Cost</h2>
+<p>Please use a cost calculator to check what api costs might incur.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p><link></p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

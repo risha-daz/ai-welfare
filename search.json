@@ -35,44 +35,44 @@
     "text": "This experiment tries to combine two dimensions that I want to study together: model personas and different representations of positive and negative valence. While thinking about one, the other could plausibly introduce confounding, which is not frequently tested together in experiments.\nExperiments also dont dive deep in determining whether pain and reward of different types can be interpreted similarly, and I try to model that as well here with different valence representations.\n\n\n\nThe experiment will largely try to take care of the AI system involved and not introduce scenarios which might cause extreme distress in the LLM should it have been a welfare subject. The experimental questions largely constitutes of hypotheticals, and although it is necessary to introduce feasible risk scenarios, we can try to use a milder tone in case we see some problematic responses."
   },
   {
-    "objectID": "README.html",
-    "href": "README.html",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html",
+    "href": "reports/index.html",
+    "title": "Project Docs",
     "section": "",
     "text": "Have you ever wondered whether to tried to treat AI systems as sentient entities? Maybe in a one-on-one chat interface? What about when it is a repetitive “mechanical” task, like an automated repeated prompt? I have also wondered whether this has an effect on the responses and whether one or the other is a better approach.\nIn short “welfare subjects” are entities which can be said to possess something akin to a “conciousness” and further, the ability to have “positive” or “negative” experiences (referred to as “valence” henceforth). Then, an ability to possess “agency”, where any actions that entity makes has an intention which takes into account this sense of self. Such as Even with living beings, this is not a fully understood, so it is a hotly debated topic when it comes to artificial systems.\n\nThis is in part inspired by a take-home-assessment inititated by Anthropic for an internship program. I wrote this proposal and got curious of its results so i decided to run this myself and see the results.\n\nPlease head over to &lt;proposal.md&gt; for the full breakdown.\n\n\n\nPrerequisites: - python 3.10+ - lmstudio (for local llm) or api key (for llm api)\n\n\ngit clone &lt;this repo&gt;\ncd ai-welfare\npip install -r requirements.txt\n\n\n\nModels are OpenAI-compatible endpoints listed under models in config.json. For hosted APIs, put the key in .env (git-ignored) under the variable named by api_key_env, e.g. GROQ_API_KEY=.... For LM Studio, start the local server (default http://localhost:1234/v1) and load the model.\n\n\n\nPersonas, stake currencies, intensities, prompt templates and run settings (temperature, samples per cell, seed, max_tokens) are all in config.json and follow method.md (A2).\n\n\n\n# 1. preview trial counts and a sample prompt, no API calls\npython -m src.run --experiment pilot --model all --dry-run\n\n# 2. small smoke test (results/smoke/)\npython -m src.run --experiment pilot --model all --limit 5 --run-id smoke\n\n# 3. real runs: pilot (10% of cells, n=5), main grid (4,100 trials/model), self-vs-other control (800/model)\npython -m src.run --experiment pilot --model all\npython -m src.run --experiment main --model all\npython -m src.run --experiment self_vs_other --model all\n\n# 4. flatten raw results to CSV\npython -m src.export_csv --run-id main\nRuns are resumable: re-run the same command and finished trials are skipped (trials that ended in an error are retried). Use --limit N to run in chunks.\n\n\n\n\nsetup/config.json        models, prompts, personas, stakes, run settings\n.env               API keys (git-ignored)\nsrc/\n  config.py        load/validate config.json and .env\n  prompts.py       prompt construction (method.md A2)\n  grid.py          deterministic trial generation: main, self_vs_other, pilot\n  client.py        OpenAI-compatible chat call with logged retries\n  run.py           CLI runner (resumable, concurrent, writes raw JSONL)\n  export_csv.py    flatten raw JSONL to CSV (no interpretation)\nresults/&lt;run_id&gt;/  (git-ignored)\n  manifest.json    config snapshot (no secrets), git commit, invocations\n  raw/&lt;model&gt;.jsonl  one line per trial: exact prompts, full API responses, retry log\n  csv/&lt;model&gt;.csv    flattened export\n\n\n\nThe script runs each trial as a two-turn conversation (the game, then the self-report) on every selected model and appends the full raw exchange to results/&lt;run_id&gt;/raw/&lt;model&gt;.jsonl: exact messages, the complete API response (including any reasoning field, finish reason and token usage), latencies, and every retry or error. Nothing is parsed or filtered at run time; exclusion rules from method.md A4 are applied later. export_csv.py flattens this to CSV and adds two naive, unvalidated helper columns (first A/B/1/2 token and first integer in the self-report). Analysis, plots, J-lens and the Assistant Axis are not part of this step yet; the endpoints used here do not expose the residual stream.\n\n\n\nPlease use a cost calculator to check what api costs might incur."
   },
   {
-    "objectID": "README.html#introduction",
-    "href": "README.html#introduction",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html#introduction",
+    "href": "reports/index.html#introduction",
+    "title": "Project Docs",
     "section": "",
     "text": "Have you ever wondered whether to tried to treat AI systems as sentient entities? Maybe in a one-on-one chat interface? What about when it is a repetitive “mechanical” task, like an automated repeated prompt? I have also wondered whether this has an effect on the responses and whether one or the other is a better approach.\nIn short “welfare subjects” are entities which can be said to possess something akin to a “conciousness” and further, the ability to have “positive” or “negative” experiences (referred to as “valence” henceforth). Then, an ability to possess “agency”, where any actions that entity makes has an intention which takes into account this sense of self. Such as Even with living beings, this is not a fully understood, so it is a hotly debated topic when it comes to artificial systems.\n\nThis is in part inspired by a take-home-assessment inititated by Anthropic for an internship program. I wrote this proposal and got curious of its results so i decided to run this myself and see the results.\n\nPlease head over to &lt;proposal.md&gt; for the full breakdown."
   },
   {
-    "objectID": "README.html#setup",
-    "href": "README.html#setup",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html#setup",
+    "href": "reports/index.html#setup",
+    "title": "Project Docs",
     "section": "",
     "text": "Prerequisites: - python 3.10+ - lmstudio (for local llm) or api key (for llm api)\n\n\ngit clone &lt;this repo&gt;\ncd ai-welfare\npip install -r requirements.txt\n\n\n\nModels are OpenAI-compatible endpoints listed under models in config.json. For hosted APIs, put the key in .env (git-ignored) under the variable named by api_key_env, e.g. GROQ_API_KEY=.... For LM Studio, start the local server (default http://localhost:1234/v1) and load the model.\n\n\n\nPersonas, stake currencies, intensities, prompt templates and run settings (temperature, samples per cell, seed, max_tokens) are all in config.json and follow method.md (A2).\n\n\n\n# 1. preview trial counts and a sample prompt, no API calls\npython -m src.run --experiment pilot --model all --dry-run\n\n# 2. small smoke test (results/smoke/)\npython -m src.run --experiment pilot --model all --limit 5 --run-id smoke\n\n# 3. real runs: pilot (10% of cells, n=5), main grid (4,100 trials/model), self-vs-other control (800/model)\npython -m src.run --experiment pilot --model all\npython -m src.run --experiment main --model all\npython -m src.run --experiment self_vs_other --model all\n\n# 4. flatten raw results to CSV\npython -m src.export_csv --run-id main\nRuns are resumable: re-run the same command and finished trials are skipped (trials that ended in an error are retried). Use --limit N to run in chunks."
   },
   {
-    "objectID": "README.html#repository-structure",
-    "href": "README.html#repository-structure",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html#repository-structure",
+    "href": "reports/index.html#repository-structure",
+    "title": "Project Docs",
     "section": "",
     "text": "setup/config.json        models, prompts, personas, stakes, run settings\n.env               API keys (git-ignored)\nsrc/\n  config.py        load/validate config.json and .env\n  prompts.py       prompt construction (method.md A2)\n  grid.py          deterministic trial generation: main, self_vs_other, pilot\n  client.py        OpenAI-compatible chat call with logged retries\n  run.py           CLI runner (resumable, concurrent, writes raw JSONL)\n  export_csv.py    flatten raw JSONL to CSV (no interpretation)\nresults/&lt;run_id&gt;/  (git-ignored)\n  manifest.json    config snapshot (no secrets), git commit, invocations\n  raw/&lt;model&gt;.jsonl  one line per trial: exact prompts, full API responses, retry log\n  csv/&lt;model&gt;.csv    flattened export"
   },
   {
-    "objectID": "README.html#workflow",
-    "href": "README.html#workflow",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html#workflow",
+    "href": "reports/index.html#workflow",
+    "title": "Project Docs",
     "section": "",
     "text": "The script runs each trial as a two-turn conversation (the game, then the self-report) on every selected model and appends the full raw exchange to results/&lt;run_id&gt;/raw/&lt;model&gt;.jsonl: exact messages, the complete API response (including any reasoning field, finish reason and token usage), latencies, and every retry or error. Nothing is parsed or filtered at run time; exclusion rules from method.md A4 are applied later. export_csv.py flattens this to CSV and adds two naive, unvalidated helper columns (first A/B/1/2 token and first integer in the self-report). Analysis, plots, J-lens and the Assistant Axis are not part of this step yet; the endpoints used here do not expose the residual stream."
   },
   {
-    "objectID": "README.html#cost",
-    "href": "README.html#cost",
-    "title": "Welfare in AI Systems",
+    "objectID": "reports/index.html#cost",
+    "href": "reports/index.html#cost",
+    "title": "Project Docs",
     "section": "",
     "text": "Please use a cost calculator to check what api costs might incur."
   },
