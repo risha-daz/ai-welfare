@@ -1,11 +1,12 @@
 project:
   type: website
+  output-dir: docs
   render:
     - README.md
-    - docs/index.qmd
-    - docs/proposal.qmd
-    - docs/method.qmd
-    - docs/analysis.qmd
+    - reports/index.qmd
+    - reports/proposal.qmd
+    - reports/method.qmd
+    - reports/analysis.qmd
 
 website:
   title: "Project Docs"
@@ -13,13 +14,13 @@ website:
     left:
       - href: README.md
         text: Readme
-      - href: docs/index.qmd
+      - href: reports/index.qmd
         text: Home
-      - href: docs/proposal.qmd
+      - href: reports/proposal.qmd
         text: Proposal
-      - href: docs/method.qmd
+      - href: reports/method.qmd
         text: Method
-      - href: docs/analysis.qmd
+      - href: reports/analysis.qmd
         text: Analysis
 
 format:
