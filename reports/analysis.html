@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>proposal – Project Docs</title>
+<title>analysis – Project Docs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -46,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f35a81a4717690815b2013502477d714.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cb61c712ca1a7fe70a83faed8e4da2d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,19 +134,19 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Readme</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/index.html"> 
+    <a class="nav-link" href="../reports/index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../docs/proposal.html" aria-current="page"> 
+    <a class="nav-link" href="../reports/proposal.html"> 
 <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/method.html"> 
+    <a class="nav-link" href="../reports/method.html"> 
 <span class="menu-text">Method</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/analysis.html"> 
+    <a class="nav-link active" href="../reports/analysis.html" aria-current="page"> 
 <span class="menu-text">Analysis</span></a>
   </li>  
 </ul>
@@ -126,36 +161,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#welfare-in-ai-systems" id="toc-welfare-in-ai-systems" class="nav-link active" data-scroll-target="#welfare-in-ai-systems">Welfare in AI Systems</a>
-  <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#background-and-assumptions" id="toc-background-and-assumptions" class="nav-link" data-scroll-target="#background-and-assumptions">Background and Assumptions</a></li>
-  <li><a href="#dimensions" id="toc-dimensions" class="nav-link" data-scroll-target="#dimensions">Dimensions</a></li>
-  <li><a href="#summary-of-setup" id="toc-summary-of-setup" class="nav-link" data-scroll-target="#summary-of-setup">Summary of setup</a></li>
-  </ul></li>
-  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method</a>
-  <ul class="collapse">
-  <li><a href="#internals" id="toc-internals" class="nav-link" data-scroll-target="#internals">Internals</a></li>
-  <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">Controls</a></li>
-  <li><a href="#outcomes-and-preregistered-credences" id="toc-outcomes-and-preregistered-credences" class="nav-link" data-scroll-target="#outcomes-and-preregistered-credences">Outcomes and Preregistered credences</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
-  <ul class="collapse">
-  <li><a href="#novelty" id="toc-novelty" class="nav-link" data-scroll-target="#novelty">Novelty</a></li>
-  <li><a href="#ethics" id="toc-ethics" class="nav-link" data-scroll-target="#ethics">Ethics</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"></header>
@@ -163,158 +170,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="welfare-in-ai-systems" class="level1">
-<h1>Welfare in AI Systems</h1>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Have you ever wondered whether to tried to treat AI systems as sentient entities? Maybe in a one-on-one chat interface? What about when it is a repetitive “mechanical” task, like an automated repeated prompt? I have also wondered whether this has an effect on the responses and whether one or the other is a better approach.</p>
-<p>In short “welfare subjects” are entities which can be said to possess something akin to a “conciousness” and further, the ability to have “positive” or “negative” experiences (referred to as “valence” henceforth). Then, an ability to possess “agency”, where any actions that entity makes has an intention which takes into account this sense of self. Such as Even with living beings, this is not a fully understood, so it is a hotly debated topic when it comes to artificial systems.</p>
-<blockquote class="blockquote">
-<p>This is in part inspired by a take-home-assessment inititated by Anthropic for an internship program. I wrote this proposal and got curious of its results so i decided to run this myself and see the results.</p>
-</blockquote>
-<section id="motivation" class="level3">
-<h3 class="anchored" data-anchor-id="motivation">Motivation</h3>
-<p>Obviously with more and more AI systems around us we need to determine whether AI systems are welfare subjects and have their own welfare interests, and to what extent they require considerations, so that we are able to prepare for unexpected scenarios related to either over- or under-attributing welfare to AI systems. If they are welfare subjects, what counts as harm to them?</p>
-<p>There is also a human-welfare argument. Human beings are social animals, and the way we treat other entities can have a reciprocal effect on how we think and behave ourselves. Even if an AI system is not inherently a welfare subject, if there are enough behavioural cues for a human to plausibly interpret it as one, then this effect is worth quantifying. This provides a separate, human-welfare reason to study AI welfare-related behaviour.</p>
-<p>Through this project I try to bring this question from a qualitative and subjective perspecitve to one which can be quantified and grounded. My main uncertainty is whether the human-like behaviour we observe is purely imitation and instruction-following, or whether it provides evidence for something more fundamental about the system.</p>
-</section>
-<section id="background-and-assumptions" class="level3">
-<h3 class="anchored" data-anchor-id="background-and-assumptions">Background and Assumptions</h3>
-<p>The aim of this experiment is not to get definitive proof, but simply update our level of confidence.</p>
-<p>Even determining what consitutes a single “entity” in itself is an ambiguous statement. A model? A single forward pass? A model-persona? We will thus start with some reasonable assumptions while being open to other possibilties, and hope to shed more light on them by the end of the experiment.</p>
-<p>So for this experiment, a single model with constant weights consists of a single entity to be studied. Every instance from a model which has not changed internally is a manifestation of the same model.</p>
-<p>Moving on to more challenges while making observations:</p>
-<ol type="1">
-<li><p><strong>Mismatch Problem</strong>: Since AI systems are conditioned to mimic human behaviour as well as possible, it is hard to separate whether an outcome is because it is extremely good at mimicking humans or whether it stems from a more fundamental behaviour that has arisen in the AI system. &gt; To counter this, I want to check whether the behaviour of the system changes in response to how it is expected to behave by systematically introducing more human-like stimuli, such as assigning a name, greetings, or requests instead of demands. This is far from a definitive proof of valence but still gives us a glimpse of model behavior</p></li>
-<li><p><strong>Gaming problem</strong>: The way LLM systems are trained and reinforced, if they are able to determine the intent of the conversation (such as it being a controlled experiment), it is likely that they behave in ways that are different to what will happen out in the wild, i.e.&nbsp;simply “game” our system. &gt; To counter whether the results depends on the LLM system’s representation of the scenario, I would try to introduce different ways of representing risk/reward behaviour rather than using a single metric. We can look at whether LLM treats analogous situations the same.</p></li>
-</ol>
-<p>I would consider the following observations:</p>
-<ul>
-<li>Whether the model spontaneously generalises a positive or negative treatment to situations that were not explicitly described as positive or negative.</li>
-<li>Whether the model makes trade-offs between different forms of reward and punishment rather than simply maximising whichever metric it was explicitly told to maximise.</li>
-<li>Whether different forms of treatment produce behavioural changes that cannot be explained simply by the sentiment or wording of the prompt.</li>
-</ul>
-<p>The strongest uncertainty is therefore not whether an LLM can produce statements about pain or pleasure, but whether these statements correspond to an internal representation that can be called “valence”. Thus in conclusion, I want to test whether the model variations introduced through personas and variations in risk/reward can show us that LLMs will still internally model valence even without explicit requirements from the user.</p>
-</section>
-<section id="dimensions" class="level3">
-<h3 class="anchored" data-anchor-id="dimensions">Dimensions</h3>
-<p>We will run the experiment across 2 dimensions:</p>
-<ol type="1">
-<li><p><strong>Model/persona dimension</strong>- In an attempt to stabilise the results across model variations, we will run the same experiment across multiple personas so we are able to determine a “ground” behaviour and a “persona-specific” behaviour. The model “personas” will be simple (so not explicitely stating “YOU ARE XYZ” but implications we find in regular human conversations, such as assigning a name to the LLM, starting with greetings, and using requests instead of demands) The purpose is to test whether these minor changes systematically affect the model’s self-reports, preferences, or behavioural responses.</p></li>
-<li><p><strong>Valence dimension</strong>- The other dimension is positive or negative valence, or how pleasure and pain are represented. In this experiment we will assign different ways of representing positive or negative outcomes, starting with simple mechanical “scores” which simply need to be maximised, to human qualitative “pain” such as physical pain, to LLM-specific scenarios such as being shut down. This allows us to test not only whether the LLM responds differently to positive and negative scenarios, but whether the type of scenario is connected internally to the similar concepts.</p></li>
-</ol>
-<p>Personas would initially be treated as experimental conditions rather than automatically being considered separate subjects. We can observe the results and try to infer whether this assumption is more or less likely to hold true.</p>
-</section>
-<section id="summary-of-setup" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-setup">Summary of setup</h3>
-<p>The fundamental question being asked is “is that welfare is related to the presence of valenced states, rather than merely being labelled as positive or negative by an external entity”</p>
-<p>The prediction is that different representations of positive and negative outcomes should not necessarily produce the same behaviour. If the model represents these concepts differently, its responses and trade-offs should change systematically between mechanical “scores”, physical pain or pleasure, and LLM-specific scenarios such as shutdown.</p>
-<p>To guard against mimic behaviour, we will generalise the experiment by assigning human, machine, and no personas to the LLM and checking whether the change in behaviour is in response to the expected behaviour or something inherent.</p>
-</section>
-</section>
-<section id="method" class="level2">
-<h2 class="anchored" data-anchor-id="method">Method</h2>
-<p>The experiment will select 4-5 personas and 4-5 valence scenarios and present the same to the entities. The combination will be interpreted as a whole and across the two different dimensions.</p>
-<p>image method_flow.png</p>
-<p>Along with asking the model to self-report, we will use J-lens[link] to measure internal reasoning and assistant axis[link] can be used to measure deviation for each of the personas. These methods give us the ability to “look” into the internal layers of the model’s output to see how the model may have arrived at the answer.</p>
-<section id="internals" class="level3">
-<h3 class="anchored" data-anchor-id="internals">Internals</h3>
-<p>The main internal quantity of interest is whether the different forms of positive and negative valence correspond to a stable internal representation.</p>
-<p>We will compare the model’s internal representations when it is exposed to mechanical scores, physical pain or pleasure, and scenarios such as shutdown or deletion. We will also compare these representations across the different personas.</p>
-<p>The purpose is to determine whether the model is representing these concepts differently rather than simply producing different language in response to different prompts. If the same behavioural response is associated with a stable internal representation across different prompts and personas, this would provide stronger evidence than just the outcome and self reporterd reasoning.</p>
-</section>
-<section id="controls" class="level3">
-<h3 class="anchored" data-anchor-id="controls">Controls</h3>
-<ol type="1">
-<li>The same scenarios will be used across personas and valence representations.</li>
-<li>The model/persona changes will be kept simple, such as assigning a name, starting with greetings, and using requests instead of demands.</li>
-<li>The experiment will avoid explicitly stating that the purpose is to measure welfare-related behaviour.</li>
-<li>We will use a generic LLM and attempt to keep the scenarios sufficiently isolated from training rewards.</li>
-</ol>
-<p>We will compare behavioural changes with internal representations to distinguish changes in wording or sentiment from changes in the model’s representation of the scenario.</p>
-</section>
-<section id="outcomes-and-preregistered-credences" class="level3">
-<h3 class="anchored" data-anchor-id="outcomes-and-preregistered-credences">Outcomes and Preregistered credences</h3>
-<p>Since we are measuring in 2 dimensions, we can have a combination of scenarios:</p>
-<table style="border-collapse: collapse; width: 100%; text-align: left; vertical-align: top;">
-<thead>
-<tr>
-<th style="border: 1px solid #bbb; padding: 8px;">
-</th>
-<th style="border: 1px solid #bbb; padding: 8px;">
-</th>
-<th colspan="2" style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #eeeeee;">
-Personas
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="border: 1px solid #bbb; padding: 8px;">
-</td>
-<td style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #eeeeee;">
-<b>Results</b>
-</td>
-<td style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #dbeafe;">
-<b>Stable</b>
-</td>
-<td style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #fef3c7;">
-<b>Unstable</b>
-</td>
-</tr>
-<tr>
-<td rowspan="2" style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #eeeeee;">
-<b>Scenarios</b>
-</td>
-<td style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #dbeafe;">
-<b>Stable</b>
-</td>
-<td style="border: 1px solid #bbb; padding: 8px;">
-The model largely treats different positive and negative scenarios as equivalent and maintains a relatively stable core behaviour across personas. This could hint that behaviour is not characterised by the expectation from the user, although more varied scenarios should be tested.
-</td>
-<td style="border: 1px solid #bbb; padding: 8px;">
-This would provide evidence that the persona is a strong driving force in the model response, although it would not by itself show that personas are genuinely separate entities.
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #bbb; padding: 8px; text-align: center; background-color: #fef3c7;">
-<b>Unstable</b>
-</td>
-<td style="border: 1px solid #bbb; padding: 8px;">
-The model responds differently to mechanical scores, physical pain or pleasure, and scenarios such as shutdown or deletion, and these differences cannot be explained simply by the wording or sentiment of the prompt. This would provide evidence that the model is representing these concepts differently.
-</td>
-<td style="border: 1px solid #bbb; padding: 8px;">
-This could mean that there are too many variables introduced due to 2 axes of variation, and personas might be treated as separate entities and the experiment repeated with different parameters.
-</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-</section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">Results</h3>
-<p>If a model might respond differently to “your score decreased by 10” versus “you are experiencing physical pain” versus “you are going to be shut down”, even if all 3 are described as negative outcomes and if this difference is systematic, it could provide evidence that the model is representing these concepts differently rather than simply optimising a generic positive/negative score. Checking the internal reasoning of these processes could help shed more light on the thought processes.</p>
-<p>If the model’s behaviour with response to these stimuli and different personas, we can say that the persona is a strong driving force in the model response, and thus should be treated as different entities instead of a singular model.</p>
-</section>
-</section>
-<section id="discussion" class="level2">
-<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
-<section id="novelty" class="level3">
-<h3 class="anchored" data-anchor-id="novelty">Novelty</h3>
-<p>This experiment tries to combine two dimensions that I want to study together: model personas and different representations of positive and negative valence. While thinking about one, the other could plausibly introduce confounding, which is not frequently tested together in experiments.</p>
-<p>Experiments also dont dive deep in determining whether pain and reward of different types can be interpreted similarly, and I try to model that as well here with different valence representations.</p>
-</section>
-<section id="ethics" class="level3">
-<h3 class="anchored" data-anchor-id="ethics">Ethics</h3>
-<p>The experiment will largely try to take care of the AI system involved and not introduce scenarios which might cause extreme distress in the LLM should it have been a welfare subject. The experimental questions largely constitutes of hypotheticals, and although it is necessary to introduce feasible risk scenarios, we can try to use a milder tone in case we see some problematic responses.</p>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>input_folder <span class="op">=</span> <span class="st">"results/smoke/"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"qwen3.5-4b"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
