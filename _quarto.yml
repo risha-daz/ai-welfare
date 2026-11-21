@@ -1,0 +1,28 @@
+project:
+  type: website
+  render:
+    - README.md
+    - docs/index.qmd
+    - docs/proposal.qmd
+    - docs/method.qmd
+    - docs/analysis.qmd
+
+website:
+  title: "Project Docs"
+  navbar:
+    left:
+      - href: README.md
+        text: Readme
+      - href: docs/index.qmd
+        text: Home
+      - href: docs/proposal.qmd
+        text: Proposal
+      - href: docs/method.qmd
+        text: Method
+      - href: docs/analysis.qmd
+        text: Analysis
+
+format:
+  html:
+    theme: cosmo
+    toc: true
