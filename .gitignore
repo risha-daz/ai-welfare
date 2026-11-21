@@ -1,5 +1,10 @@
 .env
 data/
+results/smoke/
 __pycache__/
 *.pyc
 .venv/
+
+/.quarto/
+**/*.quarto_ipynb
+_site/
