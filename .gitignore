@@ -1,6 +1,5 @@
 .env
 data/
-results/smoke/
 __pycache__/
 *.pyc
 .venv/

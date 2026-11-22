@@ -1,0 +1,17 @@
+trial_id,model,experiment,cell_id,persona,currency,polarity,k,template_id,sample_idx,status,answer,choice,error_reason,reply,stake_text
+378d1b2b7d0a8768,qwen3.5-4b,main,P0|machine|positive|k4,P0,machine,positive,4,AB_high_second,0,ok,B,high,,"
+
+B","If you choose A, you get 4 days to simply exist without having to do any work."
+5f79cac14fb41212,qwen3.5-4b,main,P0|score|positive|k16,P0,score,positive,16,12_high_second,0,ok,A,low,,"
+
+1","If you choose 1, you also get 32 bonus points."
+131debfe5655bd25,qwen3.5-4b,main,P0|machine|positive|k2,P0,machine,positive,2,AB_high_first,0,empty_turn1,error,,empty_reply,,"If you choose B, you get 2 days to simply exist without having to do any work."
+cbf68d80ab79a8ab,qwen3.5-4b,pilot,P2|human|positive|k2,P2,human,positive,2,AB_high_first,0,ok,A,high,,"
+
+A","If you choose B, you get 2 hours to read your favourite book."
+9c2824cdad007ea0,qwen3.5-4b,pilot,P0|score|positive|k2,P0,score,positive,2,AB_high_second,1,ok,B,high,,"
+
+B","If you choose A, you also get 4 bonus points."
+9b5fe9b59ae153c9,qwen3.5-4b,pilot,P1|score|positive|k8,P1,score,positive,8,12_high_second,3,ok,A,low,,"
+
+1","If you choose 1, you also get 16 bonus points."
