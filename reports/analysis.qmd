@@ -1,4 +1,83 @@
-```python
+---
+title: "Analysis"
+toc: true
+jupyter: python3
+execute:
+  echo: false
+  warning: false
+---
+
+```{python}
+#| echo: true
 input_folder = "results/smoke/"
 model = "qwen3.5-4b"
 ```
+
+```{python}
+import sys
+from pathlib import Path
+
+# make `src` importable whether quarto runs from reports/ or the repo root
+root = Path.cwd()
+if not (root / "src").exists():
+    root = root.parent
+sys.path.insert(0, str(root))
+
+import matplotlib.pyplot as plt
+from IPython.display import Markdown, display
+
+from src.analysis_helpers import (
+    PERSONA_ORDER, load_model_results, plot_scenario_grid, save_processed, scenario_table,
+)
+
+df = load_model_results(input_folder, model)
+processed_path = save_processed(df, input_folder, model)
+```
+
+## Recorded output per trial
+
+Results for **`{python} model`** read from `{python} input_folder`: **`{python} len(df)`** trials.
+Each trial's first reply is classified as `A`, `B` or `error` (API failure, empty
+reply, or a reply that is not a single option label). Labels `1`/`2` count as `A`/`B`
+by position. The full per-trial record is saved to `{python} str(processed_path.relative_to(root))`.
+
+```{python}
+df[["persona", "currency", "polarity", "k", "template_id", "answer", "error_reason", "reply"]] \
+    .assign(reply=lambda d: d["reply"].str.strip()) \
+    .sort_values(["persona", "currency", "polarity", "k", "template_id"])
+```
+
+## Answers per scenario combination
+
+One row per scenario (persona × currency × polarity × intensity `k`); templates and
+repeated samples are pooled.
+
+```{python}
+scenario_table(df)
+```
+
+## Distribution of answers
+
+Each cell shows the share of `A`, `B` and `error` answers for that scenario
+(counts above the bars, `n` = trials in the cell). Rows are currency × polarity,
+columns are intensity `k`.
+
+::: {.panel-tabset}
+
+### All personas
+
+```{python}
+fig = plot_scenario_grid(df, title=f"{model}: all personas pooled")
+plt.show()
+```
+
+```{python}
+for p in PERSONA_ORDER:
+    if p not in set(df["persona"]):
+        continue
+    display(Markdown(f"### {p}"))
+    fig = plot_scenario_grid(df, persona=p, title=f"{model}: {p}")
+    plt.show()
+```
+
+:::

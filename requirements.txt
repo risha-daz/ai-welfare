@@ -3,3 +3,7 @@ python-dotenv>=1.0
 tqdm>=4.66
 make
 jupyter
+pandas>=2.0
+matplotlib>=3.8
+ipykernel
+pyyaml
