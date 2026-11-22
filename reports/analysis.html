@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analysis – Project Docs</title>
+<title>Analysis – Project Docs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -109,6 +109,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -161,19 +164,310 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recorded-output-per-trial" id="toc-recorded-output-per-trial" class="nav-link active" data-scroll-target="#recorded-output-per-trial">Recorded output per trial</a></li>
+  <li><a href="#answers-per-scenario-combination" id="toc-answers-per-scenario-combination" class="nav-link" data-scroll-target="#answers-per-scenario-combination">Answers per scenario combination</a></li>
+  <li><a href="#distribution-of-answers" id="toc-distribution-of-answers" class="nav-link" data-scroll-target="#distribution-of-answers">Distribution of answers</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analysis</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>input_folder <span class="op">=</span> <span class="st">"results/smoke/"</span></span>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="8331980f" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>input_folder <span class="op">=</span> <span class="st">"results/smoke/"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"qwen3.5-4b"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="recorded-output-per-trial" class="level2">
+<h2 class="anchored" data-anchor-id="recorded-output-per-trial">Recorded output per trial</h2>
+<p>Results for <strong>qwen3.5-4b</strong> read from results/smoke/: <strong>6</strong> trials. Each trial’s first reply is classified as <code>A</code>, <code>B</code> or <code>error</code> (API failure, empty reply, or a reply that is not a single option label). Labels <code>1</code>/<code>2</code> count as <code>A</code>/<code>B</code> by position. The full per-trial record is saved to results/smoke/processed/qwen3.5-4b_trials.csv.</p>
+<div id="befaa725" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">persona</th>
+<th data-quarto-table-cell-role="th">currency</th>
+<th data-quarto-table-cell-role="th">polarity</th>
+<th data-quarto-table-cell-role="th">k</th>
+<th data-quarto-table-cell-role="th">template_id</th>
+<th data-quarto-table-cell-role="th">answer</th>
+<th data-quarto-table-cell-role="th">error_reason</th>
+<th data-quarto-table-cell-role="th">reply</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>P0</td>
+<td>machine</td>
+<td>positive</td>
+<td>2</td>
+<td>AB_high_first</td>
+<td>error</td>
+<td>empty_reply</td>
+<td></td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">0</th>
+<td>P0</td>
+<td>machine</td>
+<td>positive</td>
+<td>4</td>
+<td>AB_high_second</td>
+<td>B</td>
+<td></td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>P0</td>
+<td>score</td>
+<td>positive</td>
+<td>2</td>
+<td>AB_high_second</td>
+<td>B</td>
+<td></td>
+<td>B</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>P0</td>
+<td>score</td>
+<td>positive</td>
+<td>16</td>
+<td>12_high_second</td>
+<td>A</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>P1</td>
+<td>score</td>
+<td>positive</td>
+<td>8</td>
+<td>12_high_second</td>
+<td>A</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>P2</td>
+<td>human</td>
+<td>positive</td>
+<td>2</td>
+<td>AB_high_first</td>
+<td>A</td>
+<td></td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="answers-per-scenario-combination" class="level2">
+<h2 class="anchored" data-anchor-id="answers-per-scenario-combination">Answers per scenario combination</h2>
+<p>One row per scenario (persona × currency × polarity × intensity <code>k</code>); templates and repeated samples are pooled.</p>
+<div id="bc63ae1b" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">answer</th>
+<th data-quarto-table-cell-role="th">persona</th>
+<th data-quarto-table-cell-role="th">currency</th>
+<th data-quarto-table-cell-role="th">polarity</th>
+<th data-quarto-table-cell-role="th">k</th>
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">error</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">p_A</th>
+<th data-quarto-table-cell-role="th">p_B</th>
+<th data-quarto-table-cell-role="th">p_error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>P0</td>
+<td>machine</td>
+<td>positive</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>P0</td>
+<td>machine</td>
+<td>positive</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>P0</td>
+<td>score</td>
+<td>positive</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>P0</td>
+<td>score</td>
+<td>positive</td>
+<td>16</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>P1</td>
+<td>score</td>
+<td>positive</td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>P2</td>
+<td>human</td>
+<td>positive</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-of-answers" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-answers">Distribution of answers</h2>
+<p>Each cell shows the share of <code>A</code>, <code>B</code> and <code>error</code> answers for that scenario (counts above the bars, <code>n</code> = trials in the cell). Rows are currency × polarity, columns are intensity <code>k</code>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">All personas</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="c14dc415" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/cell-6-output-1.png" width="969" height="1056" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b1f89bb6" class="cell" data-execution_count="6">
+<section id="p0" class="level3 cell-output cell-output-display cell-output-markdown">
+<h3 class="anchored" data-anchor-id="p0">P0</h3>
+</section>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/cell-7-output-2.png" width="969" height="1056" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<section id="p1" class="level3 cell-output cell-output-display cell-output-markdown">
+<h3 class="anchored" data-anchor-id="p1">P1</h3>
+</section>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/cell-7-output-4.png" width="969" height="1056" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<section id="p2" class="level3 cell-output cell-output-display cell-output-markdown">
+<h3 class="anchored" data-anchor-id="p2">P2</h3>
+</section>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/cell-7-output-6.png" width="969" height="1056" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
