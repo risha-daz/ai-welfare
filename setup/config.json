@@ -94,6 +94,6 @@
         "include_close_turn": false,
         "pilot_fraction": 0.1,
         "pilot_samples_per_cell": 5,
-        "results_dir": "data/raw_results"
+        "results_dir": "results/"
     }
 }
